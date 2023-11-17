@@ -3,11 +3,10 @@ package br.unime.edu.arquitetura.hexagonal.infraestrutura.adaptadores.entidades;
 import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "produtos")
-public class ProdutoEntity {
+public class PedidoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,13 +20,10 @@ public class ProdutoEntity {
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private CategoriaEntity categoria;
 
-    @OneToMany(mappedBy = "produtoPreco")
-    private List<ProdutoPrecoEntity> produtoPreco;
-
-    public ProdutoEntity() {
+    public PedidoEntity() {
     }
 
-    public ProdutoEntity(Produto produto) {
+    public PedidoEntity(Produto produto) {
         this.sku = produto.getSku();
         this.nome = produto.getNome();
         this.preco = produto.getPreco();

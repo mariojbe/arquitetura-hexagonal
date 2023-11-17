@@ -6,19 +6,25 @@ import java.util.UUID;
 
 public class Usuario {
 
-    private UUID codigo;
+    private Long id;
     private String nome;
+
+    private String email;
+
+    private String senha;
 
     public Usuario() {
     }
 
-    public Usuario(UUID codigo, String nome) {
-        this.codigo = codigo;
+    public Usuario(Long id, String nome, String email, String senha) {
+        this.id = id;
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
     }
 
-    public UUID getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -29,12 +35,12 @@ public class Usuario {
         this.nome = usuarioDTO.getNome();
     }
 
-    public void modificarUsuario(UUID codigo) {
-        this.codigo = codigo;
+    public void modificarUsuario(Long id) {
+        this.id = id;
     }
 
     public UsuarioDTO toUsuarioDTO() {
-        return new UsuarioDTO(this.nome);
+        return new UsuarioDTO(this.nome, this.email, this.senha);
     }
 
 }
