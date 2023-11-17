@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProdutoRepositoryPort {
     List<Produto> buscarTodos();
 
-    Produto buscarPeloSku(String sku);
+    Produto buscarPeloId(Long id);
 
     void salvar(Produto produto);
 }

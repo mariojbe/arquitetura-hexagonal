@@ -30,8 +30,8 @@ public class CategoriaRepository implements CategoriaRepositoryPort {
     }
 
     @Override
-    public Categoria buscarPorId(Long id) {
-        Optional<CategoriaEntity> categoriaEntity = this.springCategoriaRepository.findById(id);
+    public Categoria buscarPeloId(Long id) {
+        Optional<CategoriaEntity> categoriaEntity = this.springCategoriaRepository.buscarPeloId(id);
 
         if (categoriaEntity.isPresent()) return categoriaEntity.get().toCategoria();
 

@@ -1,22 +1,27 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
 import br.unime.edu.arquitetura.hexagonal.dominio.Categoria;
+import br.unime.edu.arquitetura.hexagonal.dominio.ProdutoPreco;
+
+import java.util.List;
 
 public class ProdutoDTO {
     private String sku;
     private String nome;
-    private Double preco;
-    private Double quantidade;
+    private Integer quantidade;
+    private Categoria categoria;
+    private ProdutoPreco produtoPreco;
 
     public ProdutoDTO() {
         super();
     }
 
-    public ProdutoDTO(String sku, String nome, Double preco, Double quantidade) {
+    public ProdutoDTO(String sku, String nome, Integer quantidade, Categoria categoria, ProdutoPreco produtoPreco) {
         this.sku = sku;
         this.nome = nome;
-        this.preco = preco;
         this.quantidade = quantidade;
+        this.categoria = categoria;
+        this.produtoPreco = produtoPreco;
     }
 
     public String getSku() {
@@ -27,12 +32,16 @@ public class ProdutoDTO {
         return nome;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public ProdutoPreco getProdutoPreco() {
+        return produtoPreco;
     }
 
 }

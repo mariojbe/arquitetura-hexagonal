@@ -1,43 +1,31 @@
 package br.unime.edu.arquitetura.hexagonal.infraestrutura.adaptadores.entidades;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.Administrador;
 import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "produtos")
-public class AdministradorEntity {
+@DiscriminatorValue("administrador")// é usado para definir o valor discriminador para cada subclasse.
+@Table(name = "administrador")
+public class AdministradorEntity extends UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
-
-    // Relacionamento um-para-um com Categoria
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
-    private CategoriaEntity categoria;
+    private Integer pin;
 
     public AdministradorEntity() {
     }
 
-    public AdministradorEntity(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public AdministradorEntity(Administrador admin) {
+        this.pin = admin.getPin();
     }
 
-    public void atualizar(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public void atualizar(Administrador admin) {
+        this.pin = admin.getPin();
     }
 
-    public Produto toProduto() {
-        return new Produto(this.id, this.sku, this.nome, this.quantidade, this.preco);
+    public Administrador toAdministrador() {
+        return new Administrador(this.id, this.pin);
     }
 }

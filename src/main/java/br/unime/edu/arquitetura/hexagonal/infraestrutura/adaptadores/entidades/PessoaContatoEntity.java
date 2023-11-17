@@ -1,6 +1,8 @@
 package br.unime.edu.arquitetura.hexagonal.infraestrutura.adaptadores.entidades;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.PessoaContato;
 import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
+import br.unime.edu.arquitetura.hexagonal.dominio.Vendedor;
 
 import javax.persistence.*;
 
@@ -10,34 +12,32 @@ public class PessoaContatoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String telefone;
+    private String email;
+    private String whatsapp;
 
-    // Relacionamento um-para-um com Categoria
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
-    private CategoriaEntity categoria;
+    @ManyToOne // @ManyToOne Varios contatos para um vendedor
+    @JoinColumn(name = "vendedor_id")
+    private Vendedor vendedor;
 
     public PessoaContatoEntity() {
     }
 
-    public PessoaContatoEntity(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public PessoaContatoEntity(PessoaContato pessoaContato) {
+        this.telefone = pessoaContato.getTelefone();
+        this.email = pessoaContato.getEmail();
+        this.whatsapp = pessoaContato.getWhatsapp();
+        this.vendedor = pessoaContato.getVendedor();
     }
 
-    public void atualizar(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public void atualizar(PessoaContato pessoaContato) {
+        this.telefone = pessoaContato.getTelefone();
+        this.email = pessoaContato.getEmail();
+        this.whatsapp = pessoaContato.getWhatsapp();
+        this.vendedor = pessoaContato.getVendedor();
     }
 
-    public Produto toProduto() {
-        return new Produto(this.id, this.sku, this.nome, this.quantidade, this.preco);
+    public PessoaContato toPessoaContato() {
+        return new PessoaContato(this.id, this.telefone, this.email, this.whatsapp, this.vendedor);
     }
 }

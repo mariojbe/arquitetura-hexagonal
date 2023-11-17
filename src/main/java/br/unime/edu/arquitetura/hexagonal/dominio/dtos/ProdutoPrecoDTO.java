@@ -1,36 +1,28 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
+
+import java.util.List;
+
 public class ProdutoPrecoDTO {
-    private String sku;
-    private String nome;
     private Double preco;
-    private Double quantidade;
+    private List<Produto> produtos;
 
     public ProdutoPrecoDTO() {
         super();
     }
 
-    public ProdutoPrecoDTO(String sku, String nome, Double preco, Double quantidade) {
-        this.sku = sku;
-        this.nome = nome;
+    public ProdutoPrecoDTO(Double preco, List<Produto> produtos) {
         this.preco = preco;
-        this.quantidade = quantidade;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public String getNome() {
-        return nome;
+        this.produtos = produtos;
     }
 
     public Double getPreco() {
         return preco;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
 }

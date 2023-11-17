@@ -1,43 +1,38 @@
 package br.unime.edu.arquitetura.hexagonal.infraestrutura.adaptadores.entidades;
 
-import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
+import br.unime.edu.arquitetura.hexagonal.dominio.Usuario;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "produtos")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
+@DiscriminatorColumn(name = "tipo_usuario")//especifica a coluna usada para diferenciar entre os tipos de usuários.
+@Table(name = "usuario")
 public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String sku;
     private String nome;
-    private Double preco;
-    private Double quantidade;
-
-    // Relacionamento um-para-um com Categoria
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
-    private CategoriaEntity categoria;
+    private String email;
+    private String senha;
 
     public UsuarioEntity() {
     }
 
-    public UsuarioEntity(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public UsuarioEntity(Usuario usuario) {
+        this.nome = usuario.getNome();
+        this.email = usuario.getNome();
+        this.senha = usuario.getSenha();
     }
 
-    public void atualizar(Produto produto) {
-        this.sku = produto.getSku();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
+    public void atualizar(Usuario usuario) {
+        this.nome = usuario.getNome();
+        this.email = usuario.getNome();
+        this.senha = usuario.getSenha();
     }
 
-    public Produto toProduto() {
-        return new Produto(this.id, this.sku, this.nome, this.quantidade, this.preco);
+    public Usuario toUsuario() {
+        return new Usuario(this.id, this.nome, this.email, this.senha);
     }
 }

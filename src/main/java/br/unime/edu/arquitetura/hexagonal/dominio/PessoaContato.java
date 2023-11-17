@@ -1,59 +1,61 @@
 package br.unime.edu.arquitetura.hexagonal.dominio;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.dtos.PessoaContatoDTO;
 import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
 
 public class PessoaContato {
 
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String telefone;
+    private String email;
+    private String whatsapp;
+    private Vendedor vendedor;
 
-    public Produto() {
+    public PessoaContato() {
     }
 
-    public Produto(Long id, String sku, String nome, Double preco, Double quantidade) {
+    public PessoaContato(Long id, String telefone, String email, String whatsapp, Vendedor vendedor) {
         this.id = id;
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+        this.telefone = telefone;
+        this.email = email;
+        this.whatsapp = whatsapp;
+        this.vendedor = vendedor;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getSku() {
-        return sku;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEmail() {
+        return email;
     }
 
-    public Double getPreco() {
-        return preco;
+    public String getWhatsapp() {
+        return whatsapp;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public Vendedor getVendedor() {
+        return vendedor;
     }
 
-    public Produto(ProdutoDTO produtoDTO) {
-        this.sku = produtoDTO.getSku();
-        this.nome = produtoDTO.getNome();
-        this.preco = produtoDTO.getPreco();
-        this.quantidade = produtoDTO.getQuantidade();
+
+    public PessoaContato(PessoaContatoDTO pessoaContatoDTO) {
+        this.telefone = pessoaContatoDTO.getTelefone();
+        this.email = pessoaContatoDTO.getEmail();
+        this.whatsapp = pessoaContatoDTO.getWhatsapp();
+        this.vendedor = pessoaContatoDTO.getVendedor();
     }
 
-    public void atualizarEstoque(double quantidade) {
+    /*public void atualizarEstoque(double quantidade) {
         this.quantidade = quantidade;
-    }
+    }*/
 
-    public ProdutoDTO toProdutoDTO() {
-        return new ProdutoDTO(this.sku, this.nome, this.preco, this.quantidade);
+    public PessoaContatoDTO toPessoaContatoDTO() {
+        return new PessoaContatoDTO(this.telefone, this.email, this.whatsapp, this.vendedor);
     }
 
 }

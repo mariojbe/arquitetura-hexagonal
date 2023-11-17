@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface SpringCategoriaRepository extends JpaRepository<CategoriaEntity, Long> {
-    Optional<CategoriaEntity> findById(Long id);
+    Optional<CategoriaEntity> buscarPeloId(Long id);
 }

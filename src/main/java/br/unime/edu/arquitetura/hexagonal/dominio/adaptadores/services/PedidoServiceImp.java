@@ -1,56 +1,40 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.adaptadores.services;
 
-import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
-import br.unime.edu.arquitetura.hexagonal.dominio.dtos.EstoqueDTO;
-import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
-import br.unime.edu.arquitetura.hexagonal.dominio.portas.interfaces.ProdutoServicePort;
-import br.unime.edu.arquitetura.hexagonal.dominio.portas.repositories.ProdutoRepositoryPort;
-import javassist.NotFoundException;
+import br.unime.edu.arquitetura.hexagonal.dominio.Pedido;
+import br.unime.edu.arquitetura.hexagonal.dominio.dtos.PedidoDTO;
+import br.unime.edu.arquitetura.hexagonal.dominio.portas.interfaces.PedidoServicePort;
+import br.unime.edu.arquitetura.hexagonal.dominio.portas.repositories.PedidoRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 
 @Service
 @Primary
-public class PedidoServiceImp implements ProdutoServicePort {
+public class PedidoServiceImp implements PedidoServicePort {
 
 
-    private final ProdutoRepositoryPort produtoRepository;
+    private final PedidoRepositoryPort pedidoRepository;
 
     @Autowired
-    public PedidoServiceImp(@Qualifier("produtoRepository") ProdutoRepositoryPort produtoRepository) {
-        this.produtoRepository = produtoRepository;
+    public PedidoServiceImp(@Qualifier("pedidoRepository") PedidoRepositoryPort pedidoRepository) {
+        this.pedidoRepository = pedidoRepository;
     }
 
     @Override
-    public void criarProduto(ProdutoDTO produtoDTO) {
-        Produto produto = new Produto(produtoDTO);
-        this.produtoRepository.salvar(produto);
+    public void criarPedido(PedidoDTO pedidoDTO) {
+        Pedido pedido = new Pedido(pedidoDTO);
+        this.pedidoRepository.salvar(pedido);
     }
 
     @Override
-    public List<ProdutoDTO> buscarProdutos() {
-        List<Produto> produtos = this.produtoRepository.buscarTodos();
-        List<ProdutoDTO> produtoDTOS = produtos.stream().map(Produto::toProdutoDTO).collect(Collectors.toList());
-        return produtoDTOS;
-    }
-
-    @Override
-    public void atualizarEstoque(String sku, EstoqueDTO estoqueDTO) throws ChangeSetPersister.NotFoundException {
-        Produto produto = this.produtoRepository.buscarPeloSku(sku);
-
-        if (Objects.isNull(produto))
-            throw new ChangeSetPersister.NotFoundException();
-
-        produto.atualizarEstoque(estoqueDTO.getQuantidade());
-
-        this.produtoRepository.salvar(produto);
+    public List<PedidoDTO> buscarPedidos() {
+        List<Pedido> pedidos = this.pedidoRepository.buscarTodos();
+        List<PedidoDTO> pedidoDTOS = pedidos.stream().map(Pedido::toPedidoDTO).collect(Collectors.toList());
+        return pedidoDTOS;
     }
 }

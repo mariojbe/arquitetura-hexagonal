@@ -1,59 +1,77 @@
 package br.unime.edu.arquitetura.hexagonal.dominio;
 
-import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
+import br.unime.edu.arquitetura.hexagonal.dominio.dtos.PedidoDTO;
+
+import java.util.Date;
+import java.util.List;
 
 public class Pedido {
 
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private Cliente cliente;
+    private List<Produto> produtos;
+    private Date dataDoPedido;
+    private Integer quantidadeDeProdutos;
+    private String tipoDePagamento;
+    private Double valorDoPedido;
 
-    public Produto() {
+    public Pedido() {
     }
 
-    public Produto(Long id, String sku, String nome, Double preco, Double quantidade) {
+    public Pedido(Long id, Cliente cliente, List<Produto> produtos, Date dataDoPedido, Integer quantidadeDeProdutos, String tipoDePagamento, Double valorDoPedido) {
         this.id = id;
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+        this.cliente = cliente;
+        this.produtos = produtos;
+        this.dataDoPedido = dataDoPedido;
+        this.quantidadeDeProdutos = quantidadeDeProdutos;
+        this.tipoDePagamento = tipoDePagamento;
+        this.valorDoPedido = valorDoPedido;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getSku() {
-        return sku;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public String getNome() {
-        return nome;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Date getDataDoPedido() {
+        return dataDoPedido;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public Integer getQuantidadeDeProdutos() {
+        return quantidadeDeProdutos;
     }
 
-    public Produto(ProdutoDTO produtoDTO) {
-        this.sku = produtoDTO.getSku();
-        this.nome = produtoDTO.getNome();
-        this.preco = produtoDTO.getPreco();
-        this.quantidade = produtoDTO.getQuantidade();
+    public String getTipoDePagamento() {
+        return tipoDePagamento;
     }
 
-    public void atualizarEstoque(double quantidade) {
+    public Double getValorDoPedido() {
+        return valorDoPedido;
+    }
+
+
+    public Pedido(PedidoDTO pedidoDTO) {
+        this.cliente = pedidoDTO.getCliente();
+        this.produtos = pedidoDTO.getProdutos();
+        this.dataDoPedido = pedidoDTO.getDataDoPedido();
+        this.quantidadeDeProdutos = pedidoDTO.getQuantidadeDeProdutos();
+        this.tipoDePagamento = pedidoDTO.getTipoDePagamento();
+        this.valorDoPedido = pedidoDTO.getValorDoPedido();
+    }
+
+    /*public void atualizarEstoque(double quantidade) {
         this.quantidade = quantidade;
-    }
+    }*/
 
-    public ProdutoDTO toProdutoDTO() {
-        return new ProdutoDTO(this.sku, this.nome, this.preco, this.quantidade);
+    public PedidoDTO toPedidoDTO() {
+        return new PedidoDTO(this.cliente, this.produtos, this.dataDoPedido, this.quantidadeDeProdutos, this.tipoDePagamento, this.valorDoPedido);
     }
 
 }

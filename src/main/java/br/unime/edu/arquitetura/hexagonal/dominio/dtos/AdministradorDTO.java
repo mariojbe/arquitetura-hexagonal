@@ -1,36 +1,18 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
 public class AdministradorDTO {
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private Integer pin;
 
     public AdministradorDTO() {
         super();
     }
 
-    public AdministradorDTO(String sku, String nome, Double preco, Double quantidade) {
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+    public AdministradorDTO(Integer pin) {
+        this.pin = pin;
     }
 
-    public String getSku() {
-        return sku;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public Double getQuantidade() {
-        return quantidade;
+    public Integer getPin() {
+        return pin;
     }
 
 }

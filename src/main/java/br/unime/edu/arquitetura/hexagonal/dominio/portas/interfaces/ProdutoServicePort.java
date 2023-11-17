@@ -15,5 +15,5 @@ public interface ProdutoServicePort {
 
     void criarProduto(ProdutoDTO produtoDTO);
 
-    void atualizarEstoque(String sku, EstoqueDTO estoqueDTO) throws NotFoundException, ChangeSetPersister.NotFoundException;
+    void atualizarEstoque(Long id, EstoqueDTO estoqueDTO) throws NotFoundException, ChangeSetPersister.NotFoundException;
 }

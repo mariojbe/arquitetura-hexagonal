@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface SpringProdutoRepository extends JpaRepository<ProdutoEntity, Long> {
-    Optional<ProdutoEntity> findBySku(String sku);
+    Optional<ProdutoEntity> buscarPeloId(Long id);
 }

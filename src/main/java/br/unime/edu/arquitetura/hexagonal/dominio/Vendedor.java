@@ -1,59 +1,47 @@
 package br.unime.edu.arquitetura.hexagonal.dominio;
 
 import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
+import br.unime.edu.arquitetura.hexagonal.dominio.dtos.VendedorDTO;
+import br.unime.edu.arquitetura.hexagonal.infraestrutura.adaptadores.entidades.PessoaContatoEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Vendedor extends Usuario {
 
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String matricula;
 
-    public Produto() {
+    private List<PessoaContato> contatos = new ArrayList<>();
+
+    public Vendedor() {
     }
 
-    public Produto(Long id, String sku, String nome, Double preco, Double quantidade) {
+    public Vendedor(Long id, String matricula, List<PessoaContato> contatos) {
         this.id = id;
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+        this.matricula = matricula;
+        this.contatos = contatos;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getSku() {
-        return sku;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public String getNome() {
-        return nome;
+    public List<PessoaContato> getContatos() {
+        return contatos;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Vendedor(VendedorDTO vendedorDTO) {
+        this.matricula = vendedorDTO.getMatricula();
+        this.contatos = vendedorDTO.getContatos();
     }
 
-    public Double getQuantidade() {
-        return quantidade;
-    }
-
-    public Produto(ProdutoDTO produtoDTO) {
-        this.sku = produtoDTO.getSku();
-        this.nome = produtoDTO.getNome();
-        this.preco = produtoDTO.getPreco();
-        this.quantidade = produtoDTO.getQuantidade();
-    }
-
-    public void atualizarEstoque(double quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public ProdutoDTO toProdutoDTO() {
-        return new ProdutoDTO(this.sku, this.nome, this.preco, this.quantidade);
+    public VendedorDTO toVendedorDTO() {
+        return new VendedorDTO(this.matricula, this.contatos);
     }
 
 }

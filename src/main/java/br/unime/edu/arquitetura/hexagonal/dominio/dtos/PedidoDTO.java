@@ -1,36 +1,55 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.Cliente;
+import br.unime.edu.arquitetura.hexagonal.dominio.Produto;
+
+import java.util.Date;
+import java.util.List;
+
 public class PedidoDTO {
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private Cliente cliente;
+    private List<Produto> produtos;
+    private Date dataDoPedido;
+    private Integer quantidadeDeProdutos;
+    private String tipoDePagamento;
+    private Double valorDoPedido;
 
     public PedidoDTO() {
         super();
     }
 
-    public PedidoDTO(String sku, String nome, Double preco, Double quantidade) {
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+    public PedidoDTO(Cliente cliente, List<Produto> produtos, Date dataDoPedido, Integer quantidadeDeProdutos, String tipoDePagamento, Double valorDoPedido) {
+        this.cliente = cliente;
+        this.produtos = produtos;
+        this.dataDoPedido = dataDoPedido;
+        this.quantidadeDeProdutos = quantidadeDeProdutos;
+        this.tipoDePagamento = tipoDePagamento;
+        this.valorDoPedido = valorDoPedido;
     }
 
-    public String getSku() {
-        return sku;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public String getNome() {
-        return nome;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Date getDataDoPedido() {
+        return dataDoPedido;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public Integer getQuantidadeDeProdutos() {
+        return quantidadeDeProdutos;
     }
+
+    public String getTipoDePagamento() {
+        return tipoDePagamento;
+    }
+
+    public Double getValorDoPedido() {
+        return valorDoPedido;
+    }
+
 
 }

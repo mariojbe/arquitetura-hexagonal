@@ -8,9 +8,7 @@ public class Usuario {
 
     private Long id;
     private String nome;
-
     private String email;
-
     private String senha;
 
     public Usuario() {
@@ -29,6 +27,14 @@ public class Usuario {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
     public Usuario(UsuarioDTO usuarioDTO) {

@@ -1,59 +1,48 @@
 package br.unime.edu.arquitetura.hexagonal.dominio;
 
-import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
+import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoPrecoDTO;
+
+import java.util.List;
 
 public class ProdutoPreco {
 
     private Long id;
-    private String sku;
-    private String nome;
     private Double preco;
-    private Double quantidade;
 
-    public Produto() {
+    public List<Produto> produtos;
+
+    public ProdutoPreco() {
     }
 
-    public Produto(Long id, String sku, String nome, Double preco, Double quantidade) {
+    public ProdutoPreco(Long id, Double preco, List<Produto> produtos) {
         this.id = id;
-        this.sku = sku;
-        this.nome = nome;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.produtos = produtos;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getSku() {
-        return sku;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
     public Double getPreco() {
         return preco;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public Produto(ProdutoDTO produtoDTO) {
-        this.sku = produtoDTO.getSku();
-        this.nome = produtoDTO.getNome();
-        this.preco = produtoDTO.getPreco();
-        this.quantidade = produtoDTO.getQuantidade();
+    public ProdutoPreco(ProdutoPrecoDTO produtoPrecoDTO) {
+        this.preco = produtoPrecoDTO.getPreco();
+        this.produtos = produtoPrecoDTO.getProdutos();
     }
 
-    public void atualizarEstoque(double quantidade) {
+    /*public void atualizarEstoque(double quantidade) {
         this.quantidade = quantidade;
-    }
+    }*/
 
-    public ProdutoDTO toProdutoDTO() {
-        return new ProdutoDTO(this.sku, this.nome, this.preco, this.quantidade);
+    public ProdutoPrecoDTO toProdutoPrecoDTO() {
+        return new ProdutoPrecoDTO(this.preco, this.produtos);
     }
 
 }

@@ -1,36 +1,29 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.PessoaContato;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class VendedorDTO {
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String matricula;
+    private List<PessoaContato> contatos = new ArrayList<>();
 
     public VendedorDTO() {
         super();
     }
 
-    public VendedorDTO(String sku, String nome, Double preco, Double quantidade) {
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+    public VendedorDTO(String matricula, List<PessoaContato> contatos) {
+        this.matricula = matricula;
+        this.contatos = contatos;
     }
 
-    public String getSku() {
-        return sku;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public Double getQuantidade() {
-        return quantidade;
+    public List<PessoaContato> getContatos() {
+        return contatos;
     }
 
 }

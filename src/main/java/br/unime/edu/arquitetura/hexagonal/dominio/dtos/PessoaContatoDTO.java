@@ -1,36 +1,38 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
+import br.unime.edu.arquitetura.hexagonal.dominio.Vendedor;
+
 public class PessoaContatoDTO {
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String telefone;
+    private String email;
+    private String whatsapp;
+    private Vendedor vendedor;
 
     public PessoaContatoDTO() {
         super();
     }
 
-    public PessoaContatoDTO(String sku, String nome, Double preco, Double quantidade) {
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+    public PessoaContatoDTO(String telefone, String email, String whatsapp, Vendedor vendedor) {
+        this.telefone = telefone;
+        this.email = email;
+        this.whatsapp = whatsapp;
+        this.vendedor = vendedor;
     }
 
-    public String getSku() {
-        return sku;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEmail() {
+        return email;
     }
 
-    public Double getPreco() {
-        return preco;
+    public String getWhatsapp() {
+        return whatsapp;
     }
 
-    public Double getQuantidade() {
-        return quantidade;
+    public Vendedor getVendedor() {
+        return vendedor;
     }
 
 }

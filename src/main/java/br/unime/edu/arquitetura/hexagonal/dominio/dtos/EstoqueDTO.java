@@ -1,9 +1,9 @@
 package br.unime.edu.arquitetura.hexagonal.dominio.dtos;
 
 public class EstoqueDTO {
-    private double quantidade;
+    private Integer quantidade;
 
-    public double getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 }

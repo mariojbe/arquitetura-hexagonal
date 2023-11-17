@@ -5,7 +5,7 @@ import br.unime.edu.arquitetura.hexagonal.dominio.Categoria;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "categoria")
 public class CategoriaEntity {
 
     @Id

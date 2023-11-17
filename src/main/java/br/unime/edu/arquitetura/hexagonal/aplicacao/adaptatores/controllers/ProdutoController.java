@@ -31,8 +31,8 @@ public class ProdutoController {
         return produtoServicePort.buscarProdutos();
     }
 
-    @PutMapping(value = "/{sku}")
-    void atualizarEstoque(@PathVariable String sku, @RequestBody EstoqueDTO estoqueDTO) throws NotFoundException, ChangeSetPersister.NotFoundException {
-        produtoServicePort.atualizarEstoque(sku, estoqueDTO);
+    @PutMapping(value = "/{id}")
+    void atualizarEstoque(@PathVariable Long id, @RequestBody EstoqueDTO estoqueDTO) throws NotFoundException, ChangeSetPersister.NotFoundException {
+        produtoServicePort.atualizarEstoque(id, estoqueDTO);
     }
 }

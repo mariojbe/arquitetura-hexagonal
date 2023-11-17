@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-
 public interface CategoriaServicePort {
 
     List<CategoriaDTO> buscarCategorias();

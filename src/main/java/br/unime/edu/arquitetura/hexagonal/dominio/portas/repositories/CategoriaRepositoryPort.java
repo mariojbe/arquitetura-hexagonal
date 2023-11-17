@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface CategoriaRepositoryPort {
     List<Categoria> buscarTodas();
 
-    Categoria buscarPorId(Long id);
+    Categoria buscarPeloId(Long id);
 
     void salvar(Categoria categoria);
 }
