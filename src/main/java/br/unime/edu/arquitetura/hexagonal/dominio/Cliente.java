@@ -5,20 +5,14 @@ import br.unime.edu.arquitetura.hexagonal.dominio.dtos.ProdutoDTO;
 public class Cliente extends Usuario{
 
     private Long id;
-    private String sku;
-    private String nome;
-    private Double preco;
-    private Double quantidade;
+    private String profissao;
 
-    public Produto() {
+    public Cliente() {
     }
 
-    public Produto(Long id, String sku, String nome, Double preco, Double quantidade) {
+    public Cliente(Long id, String whatsApp) {
         this.id = id;
-        this.sku = sku;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
+        this.whatsApp = whatsApp;
     }
 
     public Long getId() {
